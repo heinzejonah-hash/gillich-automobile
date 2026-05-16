@@ -78,7 +78,7 @@
     }
     .hero-img {
       position: absolute; inset: 0;
-      background: url('showroom.jpg') center 20% / cover no-repeat;
+      background: url('hero.webp') center 50% / cover no-repeat;
       transform: scale(1.06);
       transition: transform 9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
@@ -461,6 +461,64 @@
 
     details summary { cursor: pointer; list-style: none; }
     details summary::-webkit-details-marker { display: none; }
+
+    /* ── LIQUID GLASS BUTTONS ── */
+    .liq-btn {
+      position: relative !important;
+      background: transparent !important;
+      border-color: transparent !important;
+      border-radius: 9999px !important;
+      color: rgba(255,255,255,0.95) !important;
+      overflow: visible !important;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    }
+    .liq-btn:hover {
+      transform: scale(1.05) !important;
+      background: transparent !important;
+      color: rgba(255,255,255,0.95) !important;
+    }
+    .liq-glass {
+      position: absolute;
+      inset: 0;
+      border-radius: 9999px;
+      overflow: hidden;
+      pointer-events: none;
+      -webkit-backdrop-filter: blur(14px) url('#liquid-glass-filter');
+      backdrop-filter: blur(14px) url('#liquid-glass-filter');
+    }
+    .liq-bubble {
+      position: absolute;
+      inset: 0;
+      border-radius: 9999px;
+      pointer-events: none;
+      box-shadow:
+        0 0 8px rgba(0,0,0,0.03),
+        0 2px 6px rgba(0,0,0,0.08),
+        inset 3px 3px 0.5px -3.5px rgba(255,255,255,0.09),
+        inset -3px -3px 0.5px -3.5px rgba(255,255,255,0.85),
+        inset 1px 1px 1px -0.5px rgba(255,255,255,0.6),
+        inset -1px -1px 1px -0.5px rgba(255,255,255,0.6),
+        inset 0 0 6px 6px rgba(255,255,255,0.12),
+        inset 0 0 2px 2px rgba(255,255,255,0.06),
+        0 0 12px rgba(0,0,0,0.15);
+    }
+    .liq-inner {
+      position: relative;
+      z-index: 10;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    /* sticky bar: simpler glass (full-width, no pill shape needed) */
+    .sticky-call, .sticky-wa {
+      -webkit-backdrop-filter: blur(20px) !important;
+      backdrop-filter: blur(20px) !important;
+      background: rgba(255,255,255,0.08) !important;
+      border-top: 1px solid rgba(255,255,255,0.12) !important;
+      transition: filter 0.2s !important;
+    }
+    .sticky-call:hover { filter: brightness(1.15); }
+    .sticky-wa:hover { filter: brightness(1.15); }
   </style>
 </head>
 <body>
@@ -1091,12 +1149,29 @@
       <summary id="datenschutz-text" style="font-size:0.7rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#2D3748; cursor:pointer; user-select:none; margin-bottom:0.75rem;">
         Datenschutzerklärung ▾
       </summary>
-      <div class="footer-text" style="color:#2D3748; line-height:1.8; max-width:760px;">
-        <strong style="color:#4A5568;">Verantwortlicher:</strong> Nico Gillich, Otto-Hahn-Str. 6, 59399 Olfen, gillich@gillich-automobile.de<br /><br />
-        <strong style="color:#4A5568;">Erhobene Daten:</strong> Beim Ausfüllen des Kontaktformulars werden Name, Telefonnummer, E-Mail und Ihre Nachricht verarbeitet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) bzw. lit. f DSGVO.<br /><br />
-        <strong style="color:#4A5568;">Speicherdauer:</strong> Ihre Daten werden nur so lange gespeichert, wie es für die Bearbeitung Ihrer Anfrage notwendig ist.<br /><br />
-        <strong style="color:#4A5568;">Ihre Rechte:</strong> Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung. Wenden Sie sich an die oben genannte Adresse.<br /><br />
-        <strong style="color:#4A5568;">Externe Dienste:</strong> Diese Website verwendet Google Fonts (Google LLC, USA) zur Schriftdarstellung. Dabei wird Ihre IP-Adresse an Google übertragen (Art. 6 Abs. 1 lit. f DSGVO).
+      <div class="footer-text" style="color:#2D3748; line-height:1.9; max-width:760px;">
+        <strong style="color:#4A5568;">1. Verantwortlicher</strong><br />
+        Nico Gillich, Otto-Hahn-Str. 6, 59399 Olfen · gillich@gillich-automobile.de · Tel.: +49 175 1402738<br /><br />
+
+        <strong style="color:#4A5568;">2. Kontaktformular (Formspree)</strong><br />
+        Beim Ausfüllen des Kontaktformulars werden Name, Telefonnummer, E-Mail-Adresse und Ihre Nachricht erhoben und zur Bearbeitung Ihrer Anfrage genutzt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) sowie lit. f DSGVO (berechtigtes Interesse an der Kommunikation).<br />
+        Die Übermittlung der Formulardaten erfolgt über den Dienstleister <strong>Formspree, Inc.</strong> (185 Berry St, Suite 550, San Francisco, CA 94107, USA). Formspree verarbeitet die Daten in unserem Auftrag und ist als Auftragsverarbeiter gemäß Art. 28 DSGVO vertraglich gebunden. Bei der Übertragung in die USA stützen wir uns auf Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO). Die Datenschutzerklärung von Formspree ist unter <a href="https://formspree.io/legal/privacy-policy" style="color:#4A5568;">formspree.io/legal/privacy-policy</a> abrufbar.<br />
+        Ihre Daten werden gelöscht, sobald Ihre Anfrage abschließend bearbeitet ist, spätestens nach 6 Monaten.<br /><br />
+
+        <strong style="color:#4A5568;">3. Fahrzeugangebote auf mobile.de</strong><br />
+        Diese Website enthält einen Link zu unserem Fahrzeugbestand auf <strong>mobile.de</strong> (Mobile.de GmbH, Mergenthalerallee 77, 65760 Eschborn). Beim Klick auf den Link verlassen Sie unsere Website. Für die Datenverarbeitung auf mobile.de ist allein Mobile.de GmbH verantwortlich. Es werden keine Daten von unserer Website an mobile.de übertragen, solange Sie nicht aktiv auf den Link klicken.<br /><br />
+
+        <strong style="color:#4A5568;">4. WhatsApp-Kontakt</strong><br />
+        Auf dieser Website finden Sie Links zum WhatsApp-Messenger (Meta Platforms Ireland Ltd., 4 Grand Canal Square, Dublin 2, Irland). Beim Klick auf einen WhatsApp-Link öffnet sich die WhatsApp-App oder WhatsApp Web. WhatsApp verarbeitet dabei ggf. Ihre Telefonnummer und Metadaten gemäß der eigenen Datenschutzrichtlinie von Meta. Rechtsgrundlage für das Anbieten des Kontaktweges ist Art. 6 Abs. 1 lit. f DSGVO.<br /><br />
+
+        <strong style="color:#4A5568;">5. OpenStreetMap (Karteneinbindung)</strong><br />
+        Zur Darstellung unseres Standorts binden wir eine Karte des Dienstes <strong>OpenStreetMap</strong> (OpenStreetMap Foundation, St John's Innovation Centre, Cowley Road, Cambridge, CB4 0WS, UK) ein. Beim Laden der Kartenansicht wird Ihre IP-Adresse an die Server der OpenStreetMap Foundation übertragen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Standortdarstellung). Weitere Informationen unter <a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy" style="color:#4A5568;">osmfoundation.org/wiki/Privacy_Policy</a>.<br /><br />
+
+        <strong style="color:#4A5568;">6. Google Fonts</strong><br />
+        Diese Website lädt Schriftarten über die Google Fonts API (Google Ireland Ltd., Gordon House, Barrow Street, Dublin 4, Irland). Dabei wird Ihre IP-Adresse an Google-Server übertragen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.<br /><br />
+
+        <strong style="color:#4A5568;">7. Ihre Rechte</strong><br />
+        Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18) sowie Datenübertragbarkeit (Art. 20). Zur Ausübung Ihrer Rechte wenden Sie sich an: gillich@gillich-automobile.de. Sie haben zudem das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren.
       </div>
     </details>
 
@@ -1121,7 +1196,41 @@
 </div>
 
 
+<!-- Liquid Glass SVG Filter -->
+<svg style="position:absolute;width:0;height:0;overflow:hidden;" aria-hidden="true">
+  <defs>
+    <filter id="liquid-glass-filter" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05 0.05" numOctaves="1" seed="1" result="turbulence"/>
+      <feGaussianBlur in="turbulence" stdDeviation="2" result="blurredNoise"/>
+      <feDisplacementMap in="SourceGraphic" in2="blurredNoise" scale="60" xChannelSelector="R" yChannelSelector="B" result="displaced"/>
+      <feGaussianBlur in="displaced" stdDeviation="3" result="finalBlur"/>
+      <feComposite in="finalBlur" in2="finalBlur" operator="over"/>
+    </filter>
+  </defs>
+</svg>
+
 <script>
+  // Apply liquid glass effect to all CTAs
+  document.querySelectorAll('.btn-primary, .btn-outline, .btn-call').forEach(el => {
+    el.classList.add('liq-btn');
+
+    const inner = document.createElement('span');
+    inner.className = 'liq-inner';
+    while (el.firstChild) inner.appendChild(el.firstChild);
+
+    const glass = document.createElement('span');
+    glass.className = 'liq-glass';
+    glass.setAttribute('aria-hidden', 'true');
+
+    const bubble = document.createElement('span');
+    bubble.className = 'liq-bubble';
+    bubble.setAttribute('aria-hidden', 'true');
+
+    el.appendChild(glass);
+    el.appendChild(bubble);
+    el.appendChild(inner);
+  });
+
   window.addEventListener('load', () => {
     document.getElementById('heroBg').classList.add('ready');
   });
