@@ -14,21 +14,21 @@
     html { scroll-behavior: smooth; }
 
     :root {
-      --navy:    #0B1220;
-      --navy2:   #0F1828;
-      --navy3:   #162035;
-      --gold:    #C9A86C;
-      --gold2:   #B8955A;
-      --gold-pale: rgba(201,168,108,0.08);
-      --white:   #FFFFFF;
-      --off:     #F4F3F0;
-      --muted:   #8A96A8;
-      --border:  rgba(255,255,255,0.08);
-      --border2: rgba(201,168,108,0.2);
+      --dark:      #0D0D0D;
+      --dark2:     #141414;
+      --dark3:     #1C1C1C;
+      --red:       #C8102E;
+      --red2:      #A80D26;
+      --red-pale:  rgba(200,16,46,0.08);
+      --white:     #FFFFFF;
+      --off:       #F4F3F0;
+      --muted:     #888888;
+      --border:    rgba(255,255,255,0.08);
+      --border2:   rgba(200,16,46,0.2);
     }
 
     body {
-      background: var(--navy);
+      background: var(--dark);
       color: var(--white);
       font-family: 'Inter', system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
@@ -41,7 +41,7 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       height: 68px;
       display: flex; align-items: center;
-      background: rgba(11,18,32,0.9);
+      background: rgba(13,13,13,0.92);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
@@ -58,60 +58,57 @@
     .nav-links a:hover { color: var(--white); }
     .btn-call {
       display: flex; align-items: center; gap: 8px;
-      background: var(--gold); color: var(--navy);
+      background: var(--red); color: #fff;
       font-weight: 700; font-size: 0.85rem;
       padding: 0.65rem 1.4rem; border-radius: 6px;
       transition: background 0.2s, transform 0.15s;
       letter-spacing: 0.02em;
     }
-    .btn-call:hover { background: var(--gold2); transform: translateY(-1px); }
+    .btn-call:hover { background: var(--red2); transform: translateY(-1px); }
 
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-    }
+    @media (max-width: 768px) { .nav-links { display: none; } }
 
     /* ── HERO ── */
     .hero {
       position: relative;
       height: 100svh; min-height: 600px;
-      display: flex; align-items: flex-end;
+      display: flex; align-items: center;
       overflow: hidden;
+      padding-top: 68px;
     }
     .hero-img {
       position: absolute; inset: 0;
-      background: url('showroom.jpg') center 55% / cover no-repeat;
+      background: url('showroom.jpg') center 20% / cover no-repeat;
       transform: scale(1.06);
       transition: transform 9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     .hero-img.ready { transform: scale(1); }
 
-    /* Strong overlay: kills the sky at top, reveals cars in middle */
     .hero-overlay {
       position: absolute; inset: 0;
-      background:
-        linear-gradient(to bottom,
-          var(--navy) 0%,
-          rgba(11,18,32,0.75) 25%,
-          rgba(11,18,32,0.35) 52%,
-          rgba(11,18,32,0.85) 100%
-        );
+      background: linear-gradient(to bottom,
+        rgba(13,13,13,0.5) 0%,
+        rgba(13,13,13,0.2) 35%,
+        rgba(13,13,13,0.6) 70%,
+        rgba(13,13,13,0.92) 100%
+      );
     }
 
     .hero-content {
       position: relative; z-index: 2;
       width: 100%; max-width: 1280px; margin: 0 auto;
-      padding: 0 2rem 6vh;
+      padding: 0 2rem;
     }
 
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 10px;
       font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--gold);
+      text-transform: uppercase; color: var(--red);
       margin-bottom: 1.5rem;
     }
     .hero-eyebrow::before {
       content: ''; display: block;
-      width: 28px; height: 1.5px; background: var(--gold);
+      width: 28px; height: 1.5px; background: var(--red);
     }
 
     .hero-h1 {
@@ -131,12 +128,12 @@
 
     .btn-primary {
       display: inline-flex; align-items: center; gap: 8px;
-      background: var(--gold); color: var(--navy);
+      background: var(--red); color: #fff;
       font-weight: 700; font-size: 0.95rem; letter-spacing: 0.01em;
       padding: 1rem 2rem; border-radius: 6px;
       transition: background 0.2s, transform 0.15s;
     }
-    .btn-primary:hover { background: var(--gold2); transform: translateY(-2px); }
+    .btn-primary:hover { background: var(--red2); transform: translateY(-2px); }
 
     .btn-outline {
       display: inline-flex; align-items: center; gap: 8px;
@@ -144,9 +141,9 @@
       font-weight: 600; font-size: 0.95rem;
       padding: 1rem 2rem; border-radius: 6px;
       border: 1px solid rgba(255,255,255,0.25);
-      transition: border-color 0.2s, background 0.2s;
+      transition: border-color 0.2s, color 0.2s;
     }
-    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-outline:hover { border-color: var(--red); color: var(--red); }
 
     .hero-stats {
       display: flex; flex-wrap: wrap; align-items: center; gap: 2rem;
@@ -157,11 +154,11 @@
     .stat-num { font-size: 1.5rem; font-weight: 800; color: var(--white); }
     .stat-label { font-size: 0.75rem; color: var(--muted); line-height: 1.3; }
     .stat-divider { width: 1px; height: 32px; background: var(--border); }
-    .stars-gold { color: var(--gold); letter-spacing: 2px; font-size: 1rem; }
+    .stars-gold { color: #FFB800; letter-spacing: 2px; font-size: 1rem; }
 
-    /* ── STRIP (dark gold bar) ── */
+    /* ── STRIP ── */
     .strip {
-      background: var(--gold);
+      background: var(--red);
       padding: 0.9rem 2rem;
       overflow: hidden;
     }
@@ -172,10 +169,10 @@
     }
     .strip-item {
       display: flex; align-items: center; gap: 8px;
-      font-size: 0.78rem; font-weight: 700; color: var(--navy);
+      font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.95);
       letter-spacing: 0.06em; text-transform: uppercase;
     }
-    .strip-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--navy); opacity: 0.4; }
+    .strip-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.4); }
 
     /* ── SECTION WRAPPER ── */
     .section { padding: 6rem 2rem; }
@@ -183,7 +180,7 @@
 
     .section-label {
       font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--gold);
+      text-transform: uppercase; color: var(--red);
       margin-bottom: 1rem;
     }
     .section-h2 {
@@ -191,48 +188,64 @@
       font-weight: 800; line-height: 1.05; letter-spacing: -0.025em;
     }
     .section-line {
-      width: 2.5rem; height: 2px; background: var(--gold);
+      width: 2.5rem; height: 2px; background: var(--red);
       margin: 1.25rem 0 2rem;
     }
 
     /* ── LEISTUNGEN ── */
     .leistungen-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
       border: 1.5px solid var(--border);
       border-radius: 14px;
       overflow: hidden;
-      margin-top: 3.5rem;
-      background: var(--border);
+      margin-top: 2.5rem;
     }
     .leistung-card {
-      background: var(--navy2);
-      padding: 2.25rem 2rem;
+      background: var(--dark2);
+      padding: 2rem 1.5rem;
+      border-right: 1.5px solid var(--border);
       transition: background 0.25s;
     }
-    .leistung-card:hover { background: var(--navy3); }
+    .leistung-card:last-child { border-right: none; }
+    .leistung-card:hover { background: var(--dark3); }
     .leistung-icon {
-      width: 44px; height: 44px; border-radius: 10px;
-      background: var(--gold-pale); border: 1px solid var(--border2);
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--red-pale); border: 1px solid var(--border2);
       display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.1rem;
     }
-    .leistung-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.6rem; }
-    .leistung-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+    .leistung-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.3; }
+    .leistung-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+    @media (max-width: 1024px) {
+      .leistungen-grid { grid-template-columns: repeat(3, 1fr); }
+      .leistung-card:nth-child(3) { border-right: none; }
+      .leistung-card:nth-child(4), .leistung-card:nth-child(5) {
+        border-top: 1.5px solid var(--border);
+      }
+      .leistung-card:nth-child(5) { border-right: none; }
+    }
+    @media (max-width: 640px) {
+      .leistungen-grid { grid-template-columns: repeat(2, 1fr); }
+      .leistung-card:nth-child(odd) { border-right: 1.5px solid var(--border); }
+      .leistung-card:nth-child(even) { border-right: none; }
+      .leistung-card:nth-child(3), .leistung-card:nth-child(4), .leistung-card:nth-child(5) {
+        border-top: 1.5px solid var(--border);
+      }
+    }
 
     /* ── ÜBER NICO ── */
     .uber-grid {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 5rem; align-items: center;
     }
-    @media (max-width: 900px) {
-      .uber-grid { grid-template-columns: 1fr; gap: 3rem; }
-    }
+    @media (max-width: 900px) { .uber-grid { grid-template-columns: 1fr; gap: 3rem; } }
 
     .portrait-frame {
       position: relative; border-radius: 14px; overflow: hidden;
-      aspect-ratio: 4/5; background: var(--navy2);
+      aspect-ratio: 4/5; background: var(--dark2);
     }
     .portrait-frame img {
       width: 100%; height: 100%;
@@ -241,7 +254,7 @@
     }
     .portrait-label {
       position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem;
-      background: rgba(11,18,32,0.85);
+      background: rgba(13,13,13,0.85);
       backdrop-filter: blur(12px);
       border: 1px solid var(--border);
       border-radius: 10px;
@@ -250,7 +263,7 @@
     }
     .portrait-label-dot {
       width: 8px; height: 8px; border-radius: 50%;
-      background: var(--gold); flex-shrink: 0;
+      background: var(--red); flex-shrink: 0;
     }
 
     .uber-quote {
@@ -259,18 +272,18 @@
       color: rgba(255,255,255,0.75);
       line-height: 1.55; margin-bottom: 2rem;
       padding-left: 1.5rem;
-      border-left: 2px solid var(--gold);
+      border-left: 2px solid var(--red);
     }
 
     .rating-chip {
       display: inline-flex; align-items: center; gap: 1rem;
-      background: var(--navy2); border: 1px solid var(--border);
+      background: var(--dark2); border: 1px solid var(--border);
       border-radius: 10px; padding: 1rem 1.5rem;
     }
 
     /* ── FAHRZEUGE BANNER ── */
     .fahrzeuge-banner {
-      background: var(--navy2);
+      background: var(--dark2);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 3rem;
@@ -283,19 +296,63 @@
     }
     .fahrzeuge-logo-row { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
     .mobile-badge {
-      background: var(--gold); color: var(--navy);
+      background: var(--red); color: #fff;
       font-size: 0.65rem; font-weight: 800; letter-spacing: 0.1em;
       text-transform: uppercase; padding: 3px 8px; border-radius: 4px;
     }
 
+    /* ── BEWERTUNGEN ── */
+    .reviews-mask {
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+      max-height: 640px;
+      overflow: hidden;
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      margin-top: 3rem;
+    }
+    .reviews-col { flex: 0 0 300px; overflow: hidden; }
+    .reviews-col-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      animation: scrollUp var(--dur, 20s) linear infinite;
+    }
+    .review-card {
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+    }
+    .review-stars { color: #FFB800; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 0.75rem; }
+    .review-text { font-size: 0.85rem; color: rgba(255,255,255,0.72); line-height: 1.65; margin-bottom: 1rem; }
+    .review-footer { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+    .review-name { font-size: 0.875rem; font-weight: 700; color: var(--white); }
+    .review-google { font-size: 0.68rem; color: var(--muted); font-weight: 600; letter-spacing: 0.04em; }
+
+    @keyframes scrollUp {
+      0%   { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+
+    @media (max-width: 900px) {
+      .reviews-col:nth-child(3) { display: none; }
+      .reviews-col { flex: 0 0 280px; }
+    }
+    @media (max-width: 600px) {
+      .reviews-col:nth-child(2) { display: none; }
+      .reviews-col { flex: 0 0 calc(100vw - 4rem); max-width: 320px; }
+    }
+
     /* ── KONTAKT (light section) ── */
     .section-light {
-      background: var(--off); color: var(--navy);
+      background: var(--off); color: var(--dark);
       padding: 6rem 2rem;
     }
-    .section-light .section-label { color: var(--gold2); }
-    .section-light .section-h2 { color: var(--navy); }
-    .section-light .section-line { background: var(--gold2); }
+    .section-light .section-label { color: var(--red2); }
+    .section-light .section-h2 { color: var(--dark); }
+    .section-light .section-line { background: var(--red2); }
 
     .kontakt-grid {
       display: grid; grid-template-columns: 1fr 1fr;
@@ -305,60 +362,60 @@
 
     .contact-row {
       display: flex; align-items: center; gap: 1rem;
-      padding: 1rem 0; border-bottom: 1px solid rgba(11,18,32,0.08);
+      padding: 1rem 0; border-bottom: 1px solid rgba(13,13,13,0.08);
     }
     .contact-row:last-child { border-bottom: none; }
     .contact-icon {
       width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
-      background: var(--gold-pale); border: 1px solid rgba(201,168,108,0.3);
+      background: rgba(200,16,46,0.08); border: 1px solid rgba(200,16,46,0.25);
       display: flex; align-items: center; justify-content: center;
     }
-    .contact-lbl { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(11,18,32,0.4); }
-    .contact-val { font-size: 0.97rem; font-weight: 700; color: var(--navy); margin-top: 1px; }
+    .contact-lbl { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(13,13,13,0.4); }
+    .contact-val { font-size: 0.97rem; font-weight: 700; color: var(--dark); margin-top: 1px; }
 
     .hours-table { width: 100%; }
     .hours-row {
       display: flex; justify-content: space-between;
       padding: 0.7rem 0;
-      border-bottom: 1px solid rgba(11,18,32,0.08);
+      border-bottom: 1px solid rgba(13,13,13,0.08);
       font-size: 0.9rem;
     }
     .hours-row:last-child { border-bottom: none; }
-    .hours-day { color: rgba(11,18,32,0.5); }
-    .hours-time { font-weight: 700; color: var(--navy); }
-    .hours-closed { font-weight: 600; color: rgba(11,18,32,0.3); }
+    .hours-day { color: rgba(13,13,13,0.5); }
+    .hours-time { font-weight: 700; color: var(--dark); }
+    .hours-closed { font-weight: 600; color: rgba(13,13,13,0.3); }
 
     .inp {
       width: 100%; background: #fff;
-      border: 1.5px solid rgba(11,18,32,0.12);
-      border-radius: 8px; color: var(--navy);
+      border: 1.5px solid rgba(13,13,13,0.12);
+      border-radius: 8px; color: var(--dark);
       padding: 0.875rem 1rem; font-size: 0.95rem;
       font-family: inherit; transition: border-color 0.2s;
     }
-    .inp:focus { outline: none; border-color: var(--gold2); }
-    .inp::placeholder { color: rgba(11,18,32,0.3); }
+    .inp:focus { outline: none; border-color: var(--red2); }
+    .inp::placeholder { color: rgba(13,13,13,0.3); }
     textarea.inp { resize: vertical; min-height: 110px; }
     select.inp { appearance: none; cursor: pointer; }
 
     .form-label {
       display: block; font-size: 0.75rem; font-weight: 700;
       letter-spacing: 0.08em; text-transform: uppercase;
-      color: rgba(11,18,32,0.45); margin-bottom: 0.4rem;
+      color: rgba(13,13,13,0.45); margin-bottom: 0.4rem;
     }
 
     .btn-submit {
-      width: 100%; background: var(--navy); color: #fff;
+      width: 100%; background: var(--dark); color: #fff;
       font-weight: 700; font-size: 0.95rem; letter-spacing: 0.02em;
       padding: 1rem 2rem; border-radius: 8px;
       border: none; cursor: pointer; display: flex;
       align-items: center; justify-content: center; gap: 8px;
       transition: background 0.2s, transform 0.15s;
     }
-    .btn-submit:hover { background: var(--navy3); transform: translateY(-1px); }
+    .btn-submit:hover { background: var(--dark3); transform: translateY(-1px); }
 
     /* ── FOOTER ── */
     footer {
-      background: #070C15;
+      background: #0A0A0A;
       border-top: 1px solid var(--border);
       padding: 3.5rem 2rem 2rem;
     }
@@ -367,9 +424,7 @@
       display: grid; grid-template-columns: 2fr 1fr 1fr;
       gap: 3rem; margin-bottom: 3rem;
     }
-    @media (max-width: 768px) {
-      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-    }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
     .footer-h { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
     .footer-link { display: block; font-size: 0.85rem; color: #4A5568; margin-bottom: 0.5rem; transition: color 0.2s; }
     .footer-link:hover { color: var(--muted); }
@@ -393,18 +448,17 @@
       body { padding-bottom: 56px; }
     }
     .sticky-call {
-      background: var(--gold); color: var(--navy);
+      background: var(--red); color: #fff;
       display: flex; align-items: center; justify-content: center; gap: 8px;
       height: 56px; font-weight: 800; font-size: 0.9rem;
     }
     .sticky-wa {
-      background: #111827; color: #fff;
+      background: #111111; color: #fff;
       display: flex; align-items: center; justify-content: center; gap: 8px;
       height: 56px; font-weight: 700; font-size: 0.9rem;
       border-top: 1px solid rgba(255,255,255,0.06);
     }
 
-    /* Impressum/Datenschutz toggle */
     details summary { cursor: pointer; list-style: none; }
     details summary::-webkit-details-marker { display: none; }
   </style>
@@ -440,7 +494,7 @@
     <div class="hero-eyebrow">Olfen · Münsterland</div>
     <h1 class="hero-h1">
       Ihr Auto.<br />
-      <span style="color:var(--gold);">Ihr Händler.</span><br />
+      <span style="color:var(--red);">Ihr Händler.</span><br />
       Ihr Vertrauen.
     </h1>
     <p class="hero-sub">
@@ -461,8 +515,8 @@
           <div style="font-size:0.7rem; color:var(--muted); margin-top:2px;">Google</div>
         </div>
         <div>
-          <div class="stat-num">4,5</div>
-          <div class="stat-label">aus 17 Bewertungen</div>
+          <div class="stat-num">5,0</div>
+          <div class="stat-label">aus 30+ Bewertungen</div>
         </div>
       </div>
       <div class="stat-divider"></div>
@@ -525,7 +579,7 @@
     <div class="leistungen-grid">
       <div class="leistung-card">
         <div class="leistung-icon">
-          <svg width="20" height="20" fill="none" stroke="var(--gold)" stroke-width="1.8" viewBox="0 0 24 24"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3M7 17v4m10-4v4M5 17h14a2 2 0 002-2V9a2 2 0 00-2-2h-5"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/></svg>
+          <svg width="20" height="20" fill="none" stroke="var(--red)" stroke-width="1.8" viewBox="0 0 24 24"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3M7 17v4m10-4v4M5 17h14a2 2 0 002-2V9a2 2 0 00-2-2h-5"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/></svg>
         </div>
         <div class="leistung-title">Neu- & Gebrauchtwagen</div>
         <div class="leistung-desc">Sorgfältig ausgewählte Fahrzeuge für jeden Anspruch — vom zuverlässigen Alltagsauto bis zum sportlichen Traumwagen.</div>
@@ -533,7 +587,7 @@
 
       <div class="leistung-card">
         <div class="leistung-icon">
-          <svg width="20" height="20" fill="none" stroke="var(--gold)" stroke-width="1.8" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          <svg width="20" height="20" fill="none" stroke="var(--red)" stroke-width="1.8" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
         </div>
         <div class="leistung-title">Finanzierung möglich</div>
         <div class="leistung-desc">Flexible Finanzierungslösungen, damit Sie Ihr Wunschfahrzeug ohne Kompromisse fahren können. Wir finden den richtigen Weg.</div>
@@ -541,7 +595,7 @@
 
       <div class="leistung-card">
         <div class="leistung-icon">
-          <svg width="20" height="20" fill="none" stroke="var(--gold)" stroke-width="1.8" viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
+          <svg width="20" height="20" fill="none" stroke="var(--red)" stroke-width="1.8" viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
         </div>
         <div class="leistung-title">Inzahlungnahme</div>
         <div class="leistung-desc">Ihr altes Fahrzeug fair bewertet und direkt in Zahlung genommen — unkompliziert und transparent.</div>
@@ -549,15 +603,15 @@
 
       <div class="leistung-card">
         <div class="leistung-icon">
-          <svg width="20" height="20" fill="none" stroke="var(--gold)" stroke-width="1.8" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <svg width="20" height="20" fill="none" stroke="var(--red)" stroke-width="1.8" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
         <div class="leistung-title">Zulassungsdienst</div>
         <div class="leistung-desc">Auf Wunsch übernehmen wir die komplette Zulassung Ihres Fahrzeugs — bequem und ohne Aufwand für Sie.</div>
       </div>
 
-      <div class="leistung-card" style="grid-column: span 1;">
+      <div class="leistung-card">
         <div class="leistung-icon">
-          <svg width="20" height="20" fill="none" stroke="var(--gold)" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          <svg width="20" height="20" fill="none" stroke="var(--red)" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
         </div>
         <div class="leistung-title">Persönlich & vertrauensvoll</div>
         <div class="leistung-desc">Kein Callcenter, kein anonymer Konzern. Sie sprechen direkt mit Nico Gillich — einem Händler, der zuhört und langfristig denkt.</div>
@@ -568,7 +622,7 @@
 
 
 <!-- ÜBER UNS -->
-<section class="section" id="ueber" style="background:var(--navy2); padding-top: 6rem; padding-bottom: 6rem;">
+<section class="section" id="ueber" style="background:var(--dark2);">
   <div class="section-inner">
     <div class="uber-grid">
 
@@ -585,7 +639,7 @@
 
       <div>
         <div class="section-label">Über uns</div>
-        <h2 class="section-h2">Kompetenz,<br /><span style="color:var(--gold);">Erfahrung</span><br />& Leidenschaft.</h2>
+        <h2 class="section-h2">Kompetenz,<br /><span style="color:var(--red);">Erfahrung</span><br />& Leidenschaft.</h2>
         <div class="section-line"></div>
 
         <p class="uber-quote">
@@ -610,8 +664,8 @@
           </div>
           <div style="width:1px; height:36px; background:var(--border);"></div>
           <div>
-            <div style="font-size:1.5rem; font-weight:800;">4,5</div>
-            <div style="font-size:0.7rem; color:var(--muted);">17 Bewertungen</div>
+            <div style="font-size:1.5rem; font-weight:800;">5,0</div>
+            <div style="font-size:0.7rem; color:var(--muted);">30+ Bewertungen</div>
           </div>
         </div>
 
@@ -636,7 +690,7 @@
 <section class="section" id="fahrzeuge">
   <div class="section-inner">
     <div class="section-label">Fahrzeugangebote</div>
-    <h2 class="section-h2">Unsere aktuellen<br /><span style="color:var(--gold);">Fahrzeuge</span></h2>
+    <h2 class="section-h2">Unsere aktuellen<br /><span style="color:var(--red);">Fahrzeuge</span></h2>
     <div class="section-line"></div>
 
     <div class="fahrzeuge-banner">
@@ -660,6 +714,165 @@
 </section>
 
 
+<!-- BEWERTUNGEN -->
+<section class="section" id="bewertungen" style="background:var(--dark2); overflow:hidden; padding-top:5rem; padding-bottom:5rem;">
+  <div class="section-inner" style="text-align:center;">
+    <div class="section-label" style="display:inline-block;">Kundenstimmen</div>
+    <h2 class="section-h2" style="margin-top:0.5rem;">Was unsere Kunden sagen</h2>
+    <div class="section-line" style="margin:1.25rem auto 0;"></div>
+    <p style="font-size:0.88rem; color:var(--muted); margin-top:1.5rem; line-height:1.65;">
+      <span class="stars-gold" style="font-size:0.85rem;">★★★★★</span>&nbsp;
+      <strong style="color:var(--white);">5,0</strong> &middot; 30+ echte Google-Bewertungen
+    </p>
+  </div>
+
+  <div class="reviews-mask">
+
+    <!-- Spalte 1 -->
+    <div class="reviews-col">
+      <div class="reviews-col-inner" style="--dur:24s">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Absolute Empfehlung! Spontane, schnelle und unkomplizierte Abwicklung meines Autoverkaufs. Super freundlich und professionell obendrein. Ich habe mich jederzeit gut aufgehoben gefühlt.</p>
+          <div class="review-footer"><span class="review-name">Jan Ringens</span><span class="review-google">Google</span></div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Einfach top! Vom ersten Gespräch bis zur Übergabe hat alles super geklappt – ehrlich, freundlich und total professionell. Man fühlt sich hier echt gut aufgehoben und sicher. So macht Autokauf Spaß!</p>
+          <div class="review-footer"><span class="review-name">Talha Dogru</span><span class="review-google">Google</span></div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Sehr sehr freundlich und hilfsbereit. Kann ich ehrlich nur empfehlen — die 5 Sterne sind absolut verdient. Hier wird ehrlich, treu und seriös ein Auto gekauft.</p>
+          <div class="review-footer"><span class="review-name">Mehmet Suciftci</span><span class="review-google">Google</span></div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Große Empfehlung! Sehr freundliche und kompetente Beratung. Zudem sehr schnelle Reparatur! Danke!</p>
+          <div class="review-footer"><span class="review-name">Linda Vogel</span><span class="review-google">Google</span></div>
+        </div>
+        <!-- Duplikat für nahtlose Schleife -->
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Absolute Empfehlung! Spontane, schnelle und unkomplizierte Abwicklung meines Autoverkaufs. Super freundlich und professionell obendrein. Ich habe mich jederzeit gut aufgehoben gefühlt.</p>
+          <div class="review-footer"><span class="review-name">Jan Ringens</span><span class="review-google">Google</span></div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Einfach top! Vom ersten Gespräch bis zur Übergabe hat alles super geklappt – ehrlich, freundlich und total professionell. Man fühlt sich hier echt gut aufgehoben und sicher. So macht Autokauf Spaß!</p>
+          <div class="review-footer"><span class="review-name">Talha Dogru</span><span class="review-google">Google</span></div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Sehr sehr freundlich und hilfsbereit. Kann ich ehrlich nur empfehlen — die 5 Sterne sind absolut verdient. Hier wird ehrlich, treu und seriös ein Auto gekauft.</p>
+          <div class="review-footer"><span class="review-name">Mehmet Suciftci</span><span class="review-google">Google</span></div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Große Empfehlung! Sehr freundliche und kompetente Beratung. Zudem sehr schnelle Reparatur! Danke!</p>
+          <div class="review-footer"><span class="review-name">Linda Vogel</span><span class="review-google">Google</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spalte 2 -->
+    <div class="reviews-col">
+      <div class="reviews-col-inner" style="--dur:19s">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Ich bin mit meinem neuen Auto und der lieben Beratung mehr als zufrieden. Alles ging super schnell und reibungslos. Ich kann Gillich Automobile nur weiter empfehlen!</p>
+          <div class="review-footer"><span class="review-name">Maja Idokeit</span><span class="review-google">Google</span></div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Alles perfekt, von der Beratung bis hin zur Übergabe gab es nichts zu bemängeln. Herr Gillich konnte mir alles relevante zum Auto sagen, ich hab mich super aufgehoben gefühlt.</p>
+          <div class="review-footer"><span class="review-name">Hashim Akhtar</span><span class="review-google">Google</span></div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Super Service und ich wurde sehr gut beraten. Würde immer wieder ein Auto bei Herrn Gillich kaufen.</p>
+          <div class="review-footer"><span class="review-name">Laura Stucke</span><span class="review-google">Google</span></div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Unkomplizierter und fairer Ankauf meines gebrauchten Fahrzeugs. Herr Gillich überzeugt mit Kompetenz und Transparenz.</p>
+          <div class="review-footer"><span class="review-name">Martin Kühnen</span><span class="review-google">Google</span></div>
+        </div>
+        <!-- Duplikat -->
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Ich bin mit meinem neuen Auto und der lieben Beratung mehr als zufrieden. Alles ging super schnell und reibungslos. Ich kann Gillich Automobile nur weiter empfehlen!</p>
+          <div class="review-footer"><span class="review-name">Maja Idokeit</span><span class="review-google">Google</span></div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Alles perfekt, von der Beratung bis hin zur Übergabe gab es nichts zu bemängeln. Herr Gillich konnte mir alles relevante zum Auto sagen, ich hab mich super aufgehoben gefühlt.</p>
+          <div class="review-footer"><span class="review-name">Hashim Akhtar</span><span class="review-google">Google</span></div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Super Service und ich wurde sehr gut beraten. Würde immer wieder ein Auto bei Herrn Gillich kaufen.</p>
+          <div class="review-footer"><span class="review-name">Laura Stucke</span><span class="review-google">Google</span></div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Unkomplizierter und fairer Ankauf meines gebrauchten Fahrzeugs. Herr Gillich überzeugt mit Kompetenz und Transparenz.</p>
+          <div class="review-footer"><span class="review-name">Martin Kühnen</span><span class="review-google">Google</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spalte 3 -->
+    <div class="reviews-col">
+      <div class="reviews-col-inner" style="--dur:27s">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Super zuverlässig und zuvorkommend! Probefahrt und Abholung des Fahrzeugs hat alles reibungslos funktioniert. Fahrzeug ist auch top, danke nochmal!</p>
+          <div class="review-footer"><span class="review-name">Lea Stockmann</span><span class="review-google">Google</span></div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Sehr kompetente und freundliche Beratung. Dazu noch fairen Preis für meinen Wagen bekommen. Rundum Sorglos.</p>
+          <div class="review-footer"><span class="review-name">Chrome</span><span class="review-google">Google</span></div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Wir sind 100% zufrieden. Herr Gillich ist ein überaus freundlicher und zuvorkommender Händler. Von der Probefahrt bis zum Verkauf lief alles professionell ab.</p>
+          <div class="review-footer"><span class="review-name">Susi</span><span class="review-google">Google</span></div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Der Verkauf meines Fahrzeugs verlief einwandfrei. Herr Gillich ist freundlich und sehr professionell. Die Preisverhandlung verläuft fair und transparent.</p>
+          <div class="review-footer"><span class="review-name">Fabian Formann</span><span class="review-google">Google</span></div>
+        </div>
+        <!-- Duplikat -->
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Super zuverlässig und zuvorkommend! Probefahrt und Abholung des Fahrzeugs hat alles reibungslos funktioniert. Fahrzeug ist auch top, danke nochmal!</p>
+          <div class="review-footer"><span class="review-name">Lea Stockmann</span><span class="review-google">Google</span></div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Sehr kompetente und freundliche Beratung. Dazu noch fairen Preis für meinen Wagen bekommen. Rundum Sorglos.</p>
+          <div class="review-footer"><span class="review-name">Chrome</span><span class="review-google">Google</span></div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Wir sind 100% zufrieden. Herr Gillich ist ein überaus freundlicher und zuvorkommender Händler. Von der Probefahrt bis zum Verkauf lief alles professionell ab.</p>
+          <div class="review-footer"><span class="review-name">Susi</span><span class="review-google">Google</span></div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Der Verkauf meines Fahrzeugs verlief einwandfrei. Herr Gillich ist freundlich und sehr professionell. Die Preisverhandlung verläuft fair und transparent.</p>
+          <div class="review-footer"><span class="review-name">Fabian Formann</span><span class="review-google">Google</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
 <!-- KONTAKT (light) -->
 <section class="section-light" id="kontakt">
   <div class="section-inner" style="max-width:1280px; margin:0 auto;">
@@ -671,21 +884,21 @@
 
       <!-- Info + Öffnungszeiten -->
       <div>
-        <h3 style="font-size:1rem; font-weight:700; color:var(--navy); margin-bottom:1.5rem; letter-spacing:-0.01em;">Direkter Kontakt</h3>
+        <h3 style="font-size:1rem; font-weight:700; color:var(--dark); margin-bottom:1.5rem; letter-spacing:-0.01em;">Direkter Kontakt</h3>
 
         <div class="contact-row">
           <div class="contact-icon">
-            <svg width="18" height="18" fill="none" stroke="var(--gold2)" stroke-width="1.8" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <svg width="18" height="18" fill="none" stroke="var(--red2)" stroke-width="1.8" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
           </div>
           <div>
             <div class="contact-lbl">Telefon</div>
-            <a href="tel:+491751402738" class="contact-val" style="color:var(--navy);">+49 175 1402738</a>
+            <a href="tel:+491751402738" class="contact-val">+49 175 1402738</a>
           </div>
         </div>
 
         <div class="contact-row">
           <div class="contact-icon">
-            <svg width="18" height="18" fill="none" stroke="var(--gold2)" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <svg width="18" height="18" fill="none" stroke="var(--red2)" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </div>
           <div>
             <div class="contact-lbl">E-Mail</div>
@@ -695,7 +908,7 @@
 
         <div class="contact-row">
           <div class="contact-icon">
-            <svg width="18" height="18" fill="none" stroke="var(--gold2)" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <svg width="18" height="18" fill="none" stroke="var(--red2)" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
           <div>
             <div class="contact-lbl">Adresse</div>
@@ -704,7 +917,7 @@
         </div>
 
         <div style="margin-top:2.5rem;">
-          <h3 style="font-size:1rem; font-weight:700; color:var(--navy); margin-bottom:1rem; letter-spacing:-0.01em;">Öffnungszeiten</h3>
+          <h3 style="font-size:1rem; font-weight:700; color:var(--dark); margin-bottom:1rem; letter-spacing:-0.01em;">Öffnungszeiten</h3>
           <div class="hours-table">
             <div class="hours-row">
               <span class="hours-day">Montag – Freitag</span>
@@ -723,7 +936,7 @@
 
         <div style="display:flex; gap:0.75rem; margin-top:2rem; flex-wrap:wrap;">
           <a href="tel:+491751402738"
-             style="display:flex; align-items:center; gap:6px; background:var(--navy); color:#fff; font-weight:700; font-size:0.85rem; padding:0.75rem 1.25rem; border-radius:7px;">
+             style="display:flex; align-items:center; gap:6px; background:var(--dark); color:#fff; font-weight:700; font-size:0.85rem; padding:0.75rem 1.25rem; border-radius:7px;">
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
             Anrufen
           </a>
@@ -737,7 +950,7 @@
 
       <!-- Formular -->
       <div>
-        <h3 style="font-size:1rem; font-weight:700; color:var(--navy); margin-bottom:1.5rem;">Nachricht senden</h3>
+        <h3 style="font-size:1rem; font-weight:700; color:var(--dark); margin-bottom:1.5rem;">Nachricht senden</h3>
         <form id="contact-form" style="display:flex; flex-direction:column; gap:1rem;">
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
             <div>
@@ -777,7 +990,7 @@
             Anfrage absenden
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
-          <p style="font-size:0.75rem; color:rgba(11,18,32,0.35); line-height:1.5;">
+          <p style="font-size:0.75rem; color:rgba(13,13,13,0.35); line-height:1.5;">
             Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Daten zur Bearbeitung Ihrer Anfrage zu. Weitere Informationen in unserer Datenschutzerklärung.
           </p>
         </form>
@@ -789,9 +1002,9 @@
 
 
 <!-- MAP -->
-<section style="background:var(--navy2); padding: 0;">
+<section style="background:var(--dark2); padding:0;">
   <div style="max-width:1280px; margin:0 auto; padding:5rem 2rem 0;">
-    <div style="font-size:0.68rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:0.75rem;">Standort</div>
+    <div style="font-size:0.68rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--red); margin-bottom:0.75rem;">Standort</div>
     <h2 style="font-size:clamp(1.75rem,3.5vw,2.5rem); font-weight:800; letter-spacing:-0.025em; margin-bottom:0.75rem;">Finden Sie uns in Olfen</h2>
     <p style="font-size:0.9rem; color:var(--muted); margin-bottom:2rem;">Otto-Hahn-Str. 6 · 59399 Olfen · Münsterland</p>
   </div>
@@ -802,15 +1015,14 @@
       loading="lazy"
       title="Standort Gillich Automobile, Otto-Hahn-Str. 6, Olfen"
     ></iframe>
-    <!-- Overlay pin card -->
     <div style="position:absolute; top:1.5rem; left:50%; transform:translateX(-50%); z-index:10;
-                background:rgba(11,18,32,0.92); backdrop-filter:blur(16px);
+                background:rgba(13,13,13,0.92); backdrop-filter:blur(16px);
                 border:1px solid rgba(255,255,255,0.1); border-radius:14px;
                 padding:1rem 1.5rem; display:flex; align-items:center; gap:1rem;
                 white-space:nowrap; box-shadow:0 8px 40px rgba(0,0,0,0.4);">
-      <div style="width:36px; height:36px; border-radius:10px; background:var(--gold);
+      <div style="width:36px; height:36px; border-radius:10px; background:var(--red);
                   display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-        <svg width="18" height="18" fill="none" stroke="#0B1220" stroke-width="2.2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2.2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
       </div>
       <div>
         <div style="font-size:0.9rem; font-weight:700; color:#fff;">Gillich Automobile</div>
@@ -819,6 +1031,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- FOOTER -->
 <footer>
@@ -830,9 +1043,9 @@
           <span style="font-weight:300; letter-spacing:0.12em; color:var(--muted); font-size:1rem;"> AUTOMOBILE</span>
         </div>
         <p class="footer-text">Ihr persönlicher Fahrzeughändler<br />im Herzen des Münsterlands.</p>
-        <div style="margin-top:1rem; display:flex; gap:0.5rem;">
+        <div style="margin-top:1rem; display:flex; gap:0.5rem; align-items:center;">
           <span class="stars-gold" style="font-size:0.9rem;">★★★★★</span>
-          <span style="font-size:0.78rem; color:var(--muted);">4,5 · 17 Bewertungen</span>
+          <span style="font-size:0.78rem; color:var(--muted);">5,0 · 30+ Bewertungen</span>
         </div>
       </div>
       <div>
@@ -909,12 +1122,10 @@
 
 
 <script>
-  // Hero ken-burns without sky flash
   window.addEventListener('load', () => {
     document.getElementById('heroBg').classList.add('ready');
   });
 
-  // Contact form
   document.getElementById('contact-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const form = e.target;
