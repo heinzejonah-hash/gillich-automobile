@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gillich Automobile – Neu- & Gebrauchtwagen in Olfen | Münsterland</title>
+  <meta name="description" content="Gillich Automobile in Olfen – Ihr persönlicher Ansprechpartner für Neu- und Gebrauchtwagen im Münsterland. Finanzierung, Inzahlungnahme & Zulassungsdienst." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://gillich-automobile.de/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Gillich Automobile – Neu- & Gebrauchtwagen in Olfen" />
+  <meta property="og:description" content="Ihr persönlicher Fahrzeughändler im Münsterland. Finanzierung möglich, Inzahlungnahme, Zulassungsdienst." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gillich-automobile.de/" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            red:    { DEFAULT: '#c9151e', dark: '#a01018', light: '#e8222c' },
+            dark:   { DEFAULT: '#0a0a0a', 2: '#111111', 3: '#1a1a1a', 4: '#222222' },
+            border: '#2a2a2a',
+            muted:  '#888888',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: #0a0a0a;
+      color: #ffffff;
+      font-family: 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid #1e1e1e;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 8vh;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('showroom.jpg');
+      background-size: cover;
+      background-position: center 60%;
+      transform: scale(1.04);
+      transition: transform 8s ease;
+    }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.92) 0%,
+        rgba(0,0,0,0.55) 40%,
+        rgba(0,0,0,0.25) 100%
+      );
+    }
+    .hero-content { position: relative; z-index: 2; }
+
+    /* ── SECTION LABELS ── */
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #c9151e;
+      margin-bottom: 1.25rem;
+    }
+    .label::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 2px;
+      background: #c9151e;
+    }
+
+    /* ── CARDS ── */
+    .service-card {
+      background: #111111;
+      border: 1px solid #1e1e1e;
+      border-radius: 12px;
+      padding: 2rem 1.75rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .service-card:hover {
+      border-color: #c9151e;
+      transform: translateY(-3px);
+    }
+
+    /* ── BUTTONS ── */
+    .btn-red {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #c9151e;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.875rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-red:hover { background: #a01018; transform: translateY(-1px); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.875rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,0.05); }
+
+    /* ── STARS ── */
+    .stars { color: #f5a623; letter-spacing: 2px; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 3rem;
+      height: 3px;
+      background: #c9151e;
+      margin: 1.25rem 0 1.75rem;
+    }
+
+    /* ── PORTRAIT ── */
+    .portrait-wrap {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: #111;
+    }
+    .portrait-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .portrait-badge {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      background: rgba(10,10,10,0.9);
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 0.75rem 1.25rem;
+      backdrop-filter: blur(8px);
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: #111111;
+      border-top: 1px solid #1e1e1e;
+      border-bottom: 1px solid #1e1e1e;
+    }
+
+    /* ── MOBILE STICKY ── */
+    .mobile-sticky {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .mobile-sticky {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        z-index: 99;
+      }
+      body { padding-bottom: 64px; }
+    }
+
+    /* ── HOURS TABLE ── */
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.625rem 0;
+      border-bottom: 1px solid #1e1e1e;
+      font-size: 0.9rem;
+    }
+    .hours-row:last-child { border-bottom: none; }
+
+    /* ── CONTACT FORM ── */
+    .inp {
+      width: 100%;
+      background: #111;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      color: #fff;
+      padding: 0.875rem 1rem;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+      font-family: inherit;
+    }
+    .inp:focus { outline: none; border-color: #c9151e; }
+    .inp::placeholder { color: #555; }
+    textarea.inp { resize: vertical; min-height: 120px; }
+
+    label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #888;
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── MOBILE.DE BANNER ── */
+    .mobile-banner {
+      background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 2.5rem;
+    }
+
+    /* headline size util */
+    .h-display { font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 900; line-height: 0.96; letter-spacing: -0.03em; }
+    .h-xl      { font-size: clamp(2rem, 4vw, 3.25rem);   font-weight: 800; line-height: 1.05; letter-spacing: -0.025em; }
+    .h-lg      { font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; line-height: 1.1; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════════ -->
+<nav>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between h-16">
+    <a href="#" class="flex items-center gap-2 text-white no-underline">
+      <span style="font-size:1.2rem; font-weight:900; letter-spacing:-0.02em;">GILLICH</span>
+      <span style="font-size:1.2rem; font-weight:300; letter-spacing:0.05em; color:#888;">AUTOMOBILE</span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-8 text-sm font-500">
+      <a href="#leistungen" class="text-gray-400 hover:text-white transition-colors no-underline">Leistungen</a>
+      <a href="#ueber" class="text-gray-400 hover:text-white transition-colors no-underline">Über uns</a>
+      <a href="#fahrzeuge" class="text-gray-400 hover:text-white transition-colors no-underline">Fahrzeuge</a>
+      <a href="#kontakt" class="text-gray-400 hover:text-white transition-colors no-underline">Kontakt</a>
+    </div>
+
+    <a href="tel:+491751402738" class="btn-red text-sm px-5 py-2.5">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Jetzt anrufen
+    </a>
+  </div>
+</nav>
+
+
+<!-- ════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg" id="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content w-full max-w-7xl mx-auto px-5 sm:px-8 pb-4">
+    <div class="max-w-3xl">
+      <div class="label mb-6">Olfen · Münsterland</div>
+
+      <h1 class="h-display text-white mb-6">
+        Ihr Auto.<br />
+        <span style="color:#c9151e;">Ihr Händler.</span><br />
+        Ihr Vertrauen.
+      </h1>
+
+      <p class="text-gray-300 text-lg max-w-xl leading-relaxed mb-10" style="font-weight:400;">
+        Persönliche Beratung, faire Konditionen und ein Händler,
+        der für Sie da ist — in Olfen im Herzen des Münsterlands.
+      </p>
+
+      <div class="flex flex-wrap gap-4">
+        <a href="https://home.mobile.de/GILLICHAUTOMOBILE" target="_blank" rel="noopener" class="btn-red text-base px-8 py-4">
+          Fahrzeuge ansehen
+          <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#kontakt" class="btn-ghost text-base px-8 py-4">Kontakt aufnehmen</a>
+      </div>
+
+      <!-- Mini trust row -->
+      <div class="flex flex-wrap items-center gap-6 mt-12">
+        <div class="flex items-center gap-2">
+          <span class="stars text-lg">★★★★★</span>
+          <span class="text-white font-700">4,5</span>
+          <span class="text-gray-500 text-sm">(17 Bewertungen)</span>
+        </div>
+        <div class="w-px h-5 bg-gray-700 hidden sm:block"></div>
+        <span class="text-gray-400 text-sm">Mo–Fr 9–18 Uhr · Sa 9–14 Uhr</span>
+        <div class="w-px h-5 bg-gray-700 hidden sm:block"></div>
+        <span class="text-gray-400 text-sm">Finanzierung möglich</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     TRUST BAR
+════════════════════════════════════════════ -->
+<div class="trust-bar py-6">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x divide-gray-800">
+      <div class="text-center px-4 py-2">
+        <div class="text-2xl font-900 text-white">4,5 ★</div>
+        <div class="text-xs text-gray-500 mt-1">Google Bewertung</div>
+      </div>
+      <div class="text-center px-4 py-2">
+        <div class="text-2xl font-900 text-white">17</div>
+        <div class="text-xs text-gray-500 mt-1">Kundenbewertungen</div>
+      </div>
+      <div class="text-center px-4 py-2">
+        <div class="text-2xl font-900" style="color:#c9151e;">100%</div>
+        <div class="text-xs text-gray-500 mt-1">Persönliche Beratung</div>
+      </div>
+      <div class="text-center px-4 py-2">
+        <div class="text-2xl font-900 text-white">Olfen</div>
+        <div class="text-xs text-gray-500 mt-1">Münsterland</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     LEISTUNGEN
+════════════════════════════════════════════ -->
+<section id="leistungen" class="py-24">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="label">Leistungen</div>
+    <h2 class="h-xl text-white mb-4">Was wir für Sie tun</h2>
+    <div class="divider"></div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
+
+      <!-- Neu & Gebraucht -->
+      <div class="service-card">
+        <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5" style="background:rgba(201,21,30,0.12);">
+          <svg width="22" height="22" fill="none" stroke="#c9151e" stroke-width="2" viewBox="0 0 24 24"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3m-4 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="17.5" cy="17.5" r="1.5"/></svg>
+        </div>
+        <h3 class="text-white font-700 text-lg mb-2">Neu- & Gebrauchtwagen</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Breites Sortiment an Fahrzeugen für jeden Anspruch und jedes Budget — sorgfältig ausgewählt.</p>
+      </div>
+
+      <!-- Finanzierung -->
+      <div class="service-card">
+        <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5" style="background:rgba(201,21,30,0.12);">
+          <svg width="22" height="22" fill="none" stroke="#c9151e" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        </div>
+        <h3 class="text-white font-700 text-lg mb-2">Finanzierung möglich</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Flexible Finanzierungslösungen, damit Sie Ihr Wunschfahrzeug ohne Kompromisse fahren können.</p>
+      </div>
+
+      <!-- Inzahlungnahme -->
+      <div class="service-card">
+        <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5" style="background:rgba(201,21,30,0.12);">
+          <svg width="22" height="22" fill="none" stroke="#c9151e" stroke-width="2" viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
+        </div>
+        <h3 class="text-white font-700 text-lg mb-2">Inzahlungnahme</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Wir nehmen Ihr altes Fahrzeug fair in Zahlung — unkompliziert und transparent bewertet.</p>
+      </div>
+
+      <!-- Zulassungsdienst -->
+      <div class="service-card">
+        <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5" style="background:rgba(201,21,30,0.12);">
+          <svg width="22" height="22" fill="none" stroke="#c9151e" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3 class="text-white font-700 text-lg mb-2">Zulassungsdienst</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Auf Wunsch kümmern wir uns um die komplette Zulassung Ihres Fahrzeugs — kein Stress für Sie.</p>
+      </div>
+
+      <!-- Persönlich -->
+      <div class="service-card sm:col-span-2 lg:col-span-2">
+        <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5" style="background:rgba(201,21,30,0.12);">
+          <svg width="22" height="22" fill="none" stroke="#c9151e" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <h3 class="text-white font-700 text-lg mb-2">Persönlich & vertrauensvoll</h3>
+        <p class="text-gray-500 text-sm leading-relaxed max-w-lg">Kein Callcenter, kein anonymer Großkonzern. Sie sprechen direkt mit Nico Gillich — einem Händler, der zuhört, ehrlich berät und langfristig denkt.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     ÜBER NICO
+════════════════════════════════════════════ -->
+<section id="ueber" class="py-24" style="background:#0d0d0d;">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Portrait -->
+      <div class="order-2 lg:order-1">
+        <div class="portrait-wrap max-w-sm mx-auto lg:max-w-none" style="max-height: 560px;">
+          <img src="nico.jpg" alt="Nico Gillich, Inhaber Gillich Automobile" loading="lazy" />
+          <div class="portrait-badge">
+            <div class="text-white font-700 text-sm">Nico Gillich</div>
+            <div class="text-gray-500 text-xs mt-0.5">Inhaber · Gillich Automobile</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="order-1 lg:order-2">
+        <div class="label">Über uns</div>
+        <h2 class="h-xl text-white mb-4">
+          Kompetenz,<br />
+          <span style="color:#c9151e;">Erfahrung</span> und<br />
+          Leidenschaft.
+        </h2>
+        <div class="divider"></div>
+
+        <div class="space-y-5 text-gray-400 leading-relaxed">
+          <p>
+            Willkommen bei <strong class="text-white">Gillich Automobile</strong> in Olfen — Ihrem persönlichen Fahrzeughändler im Münsterland.
+            Ich stehe Ihnen mit Kompetenz, Erfahrung und echter Leidenschaft für Automobile zur Seite.
+          </p>
+          <p>
+            Bei mir kaufen Sie nicht anonym. Sie erhalten individuelle Beratung, faire Konditionen
+            und einen Ansprechpartner, der auch nach dem Kauf für Sie da ist.
+          </p>
+          <p style="color:#c9151e; font-weight:600;">
+            „Schön, dass Sie uns besuchen — wir freuen uns noch mehr auf Ihren persönlichen Besuch."
+          </p>
+        </div>
+
+        <!-- Stars -->
+        <div class="mt-8 inline-flex items-center gap-4 bg-dark-3 border border-border rounded-xl px-5 py-4" style="background:#111; border-color:#2a2a2a;">
+          <div>
+            <div class="stars text-xl">★★★★★</div>
+            <div class="text-xs text-gray-500 mt-1">Google Bewertungen</div>
+          </div>
+          <div class="w-px h-10 bg-gray-800"></div>
+          <div>
+            <div class="text-2xl font-900 text-white">4,5 / 5</div>
+            <div class="text-xs text-gray-500 mt-1">aus 17 Bewertungen</div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="tel:+491751402738" class="btn-red">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            +49 175 1402738
+          </a>
+          <a href="https://wa.me/491751402738" target="_blank" rel="noopener" class="btn-ghost">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     FAHRZEUGE (Mobile.de)
+════════════════════════════════════════════ -->
+<section id="fahrzeuge" class="py-24">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="label">Fahrzeugangebote</div>
+    <h2 class="h-xl text-white mb-4">Unsere aktuellen<br /><span style="color:#c9151e;">Fahrzeuge</span></h2>
+    <div class="divider"></div>
+
+    <div class="mobile-banner mt-12 flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="max-w-xl">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background:rgba(201,21,30,0.12);">
+            <svg width="20" height="20" fill="none" stroke="#c9151e" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <span class="text-gray-400 text-sm font-600">Unsere Fahrzeuge auf mobile.de</span>
+        </div>
+        <h3 class="text-white text-2xl font-700 mb-3">Alle Angebote auf einen Blick</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          Entdecken Sie unser aktuelles Fahrzeugsortiment auf mobile.de — attraktive Neu- und Gebrauchtwagen,
+          mit allen Details, Fotos und Preisen direkt auf einen Blick.
+        </p>
+      </div>
+      <a href="https://home.mobile.de/GILLICHAUTOMOBILE" target="_blank" rel="noopener"
+         class="btn-red text-base px-8 py-4 whitespace-nowrap flex-shrink-0">
+        Zu den Fahrzeugen
+        <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     KONTAKT & ÖFFNUNGSZEITEN
+════════════════════════════════════════════ -->
+<section id="kontakt" class="py-24" style="background:#0d0d0d;">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="label">Kontakt</div>
+    <h2 class="h-xl text-white mb-4">Sprechen Sie uns an</h2>
+    <div class="divider"></div>
+
+    <div class="grid lg:grid-cols-2 gap-16 mt-12">
+
+      <!-- Left: info -->
+      <div class="space-y-8">
+
+        <!-- Direct contact -->
+        <div>
+          <h3 class="text-white font-700 text-lg mb-5">Direkt erreichen</h3>
+          <div class="space-y-4">
+            <a href="tel:+491751402738" class="flex items-center gap-4 group no-underline">
+              <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#111; border:1px solid #2a2a2a;">
+                <svg width="18" height="18" fill="none" stroke="#c9151e" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              </div>
+              <div>
+                <div class="text-xs text-gray-600 uppercase tracking-wider font-600">Telefon</div>
+                <div class="text-white font-600 group-hover:text-red transition-colors" style="--tw-text-opacity:1;">+49 175 1402738</div>
+              </div>
+            </a>
+
+            <a href="mailto:gillich@gillich-automobile.de" class="flex items-center gap-4 group no-underline">
+              <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#111; border:1px solid #2a2a2a;">
+                <svg width="18" height="18" fill="none" stroke="#c9151e" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <div class="text-xs text-gray-600 uppercase tracking-wider font-600">E-Mail</div>
+                <div class="text-white font-600 text-sm">gillich@gillich-automobile.de</div>
+              </div>
+            </a>
+
+            <a href="https://wa.me/491751402738" target="_blank" rel="noopener" class="flex items-center gap-4 group no-underline">
+              <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#111; border:1px solid #2a2a2a;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#c9151e"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              </div>
+              <div>
+                <div class="text-xs text-gray-600 uppercase tracking-wider font-600">WhatsApp</div>
+                <div class="text-white font-600">Direkt schreiben</div>
+              </div>
+            </a>
+
+            <div class="flex items-center gap-4">
+              <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#111; border:1px solid #2a2a2a;">
+                <svg width="18" height="18" fill="none" stroke="#c9151e" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <div class="text-xs text-gray-600 uppercase tracking-wider font-600">Adresse</div>
+                <div class="text-white font-600">Otto-Hahn-Str. 6, 59399 Olfen</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hours -->
+        <div>
+          <h3 class="text-white font-700 text-lg mb-4">Öffnungszeiten</h3>
+          <div style="background:#111; border:1px solid #2a2a2a; border-radius:12px; padding:1.25rem;">
+            <div class="hours-row">
+              <span class="text-gray-400">Montag – Freitag</span>
+              <span class="text-white font-600">09:00 – 18:00 Uhr</span>
+            </div>
+            <div class="hours-row">
+              <span class="text-gray-400">Samstag</span>
+              <span class="text-white font-600">09:00 – 14:00 Uhr</span>
+            </div>
+            <div class="hours-row">
+              <span class="text-gray-400">Sonntag</span>
+              <span class="text-gray-600">Geschlossen</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right: form -->
+      <div>
+        <h3 class="text-white font-700 text-lg mb-6">Nachricht senden</h3>
+        <form id="contact-form" class="space-y-5">
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="f-name">Name *</label>
+              <input id="f-name" name="name" type="text" class="inp" placeholder="Max Mustermann" required />
+            </div>
+            <div>
+              <label for="f-tel">Telefon *</label>
+              <input id="f-tel" name="telefon" type="tel" class="inp" placeholder="+49 175 1234567" required />
+            </div>
+          </div>
+          <div>
+            <label for="f-email">E-Mail</label>
+            <input id="f-email" name="email" type="email" class="inp" placeholder="max@beispiel.de" />
+          </div>
+          <div>
+            <label for="f-interesse">Interesse</label>
+            <select id="f-interesse" name="interesse" class="inp" style="appearance:none;">
+              <option value="">Bitte wählen …</option>
+              <option>Fahrzeugkauf</option>
+              <option>Fahrzeugbewertung / Inzahlungnahme</option>
+              <option>Finanzierungsanfrage</option>
+              <option>Zulassungsdienst</option>
+              <option>Allgemeine Anfrage</option>
+            </select>
+          </div>
+          <div>
+            <label for="f-msg">Nachricht</label>
+            <textarea id="f-msg" name="nachricht" class="inp" placeholder="Womit kann ich Ihnen helfen?"></textarea>
+          </div>
+
+          <div id="form-success" class="hidden rounded-lg p-4 text-sm font-600" style="background:rgba(201,21,30,0.1); border:1px solid rgba(201,21,30,0.3); color:#f87171;">
+            Vielen Dank! Nico meldet sich so schnell wie möglich bei Ihnen.
+          </div>
+
+          <button type="submit" class="btn-red w-full justify-center text-base py-4">
+            Anfrage senden
+            <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <p class="text-gray-600 text-xs">Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Daten zur Bearbeitung Ihrer Anfrage zu.</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer style="background:#060606; border-top:1px solid #1a1a1a;">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-12">
+    <div class="grid md:grid-cols-3 gap-8 mb-10">
+      <div>
+        <div class="mb-3">
+          <span style="font-size:1.1rem; font-weight:900; letter-spacing:-0.02em; color:#fff;">GILLICH</span>
+          <span style="font-size:1.1rem; font-weight:300; letter-spacing:0.05em; color:#555;"> AUTOMOBILE</span>
+        </div>
+        <p class="text-gray-600 text-sm leading-relaxed">Ihr persönlicher Fahrzeughändler<br />im Münsterland.</p>
+      </div>
+      <div>
+        <h4 class="text-white font-700 text-sm mb-4">Kontakt</h4>
+        <div class="space-y-1 text-gray-600 text-sm">
+          <div>Otto-Hahn-Str. 6, 59399 Olfen</div>
+          <div>Tel: <a href="tel:+491751402738" class="text-gray-500 hover:text-white no-underline">+49 175 1402738</a></div>
+          <div>E-Mail: <a href="mailto:gillich@gillich-automobile.de" class="text-gray-500 hover:text-white no-underline">gillich@gillich-automobile.de</a></div>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-white font-700 text-sm mb-4">Rechtliches</h4>
+        <div class="space-y-2 text-sm">
+          <div><a href="#impressum" class="text-gray-500 hover:text-white no-underline">Impressum</a></div>
+          <div><a href="#datenschutz" class="text-gray-500 hover:text-white no-underline">Datenschutzerklärung</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Impressum -->
+    <div id="impressum" class="border-t border-gray-900 pt-8 mb-8">
+      <h4 class="text-gray-500 font-700 text-xs uppercase tracking-widest mb-4">Impressum</h4>
+      <div class="text-gray-700 text-xs leading-relaxed space-y-1">
+        <div>Gillich Automobile – Inh. Nico Gillich · Otto-Hahn-Str. 6 · 59399 Olfen</div>
+        <div>Tel: +49 175 1402738 · E-Mail: gillich@gillich-automobile.de</div>
+        <div>USt-ID: DE357414784</div>
+        <div>Verantwortlich nach § 55 Abs. 2 RStV: Nico Gillich, Otto-Hahn-Str. 6, 59399 Olfen</div>
+        <div class="pt-1">OS-Plattform: <a href="https://ec.europa.eu/consumers/odr" class="text-gray-600 hover:text-gray-400 no-underline">https://ec.europa.eu/consumers/odr</a></div>
+        <div>Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</div>
+      </div>
+    </div>
+
+    <!-- Datenschutz -->
+    <div id="datenschutz" class="border-t border-gray-900 pt-8 mb-8">
+      <h4 class="text-gray-500 font-700 text-xs uppercase tracking-widest mb-4">Datenschutzerklärung</h4>
+      <div class="text-gray-700 text-xs leading-relaxed space-y-3">
+        <p><strong class="text-gray-500">Verantwortlicher:</strong> Nico Gillich, Otto-Hahn-Str. 6, 59399 Olfen, gillich@gillich-automobile.de</p>
+        <p><strong class="text-gray-500">Erhobene Daten:</strong> Beim Ausfüllen des Kontaktformulars werden Name, Telefonnummer, E-Mail-Adresse und Ihre Nachricht verarbeitet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) bzw. lit. f DSGVO (berechtigtes Interesse).</p>
+        <p><strong class="text-gray-500">Speicherdauer:</strong> Ihre Daten werden nur so lange gespeichert, wie es für die Bearbeitung Ihrer Anfrage notwendig ist.</p>
+        <p><strong class="text-gray-500">Ihre Rechte:</strong> Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Datenübertragbarkeit. Wenden Sie sich dazu an die oben genannte Adresse.</p>
+        <p><strong class="text-gray-500">Externe Dienste:</strong> Diese Website verwendet Google Fonts (Google LLC, USA) zur Darstellung von Schriften. Dabei wird Ihre IP-Adresse an Google übertragen. Grundlage ist Art. 6 Abs. 1 lit. f DSGVO.</p>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-900 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <span class="text-gray-800 text-xs">© 2025 Gillich Automobile – Inh. Nico Gillich. Alle Rechte vorbehalten.</span>
+      <span class="text-gray-800 text-xs">Website von <a href="https://jonahheinze.de" class="text-gray-700 hover:text-gray-500 no-underline">Jonah Heinze</a></span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ════════════════════════════════════════════
+     MOBILE STICKY BAR
+════════════════════════════════════════════ -->
+<div class="mobile-sticky">
+  <a href="tel:+491751402738"
+     style="background:#c9151e; color:#fff; display:flex; align-items:center; justify-content:center; gap:8px; height:56px; font-weight:700; font-size:0.9rem; text-decoration:none;">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    Anrufen
+  </a>
+  <a href="https://wa.me/491751402738" target="_blank" rel="noopener"
+     style="background:#111; color:#fff; display:flex; align-items:center; justify-content:center; gap:8px; height:56px; font-weight:700; font-size:0.9rem; text-decoration:none; border-top:1px solid #2a2a2a;">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp
+  </a>
+</div>
+
+
+<script>
+  // Hero bg animation on load
+  window.addEventListener('load', () => {
+    document.getElementById('hero-bg').classList.add('loaded');
+  });
+
+  // Contact form
+  document.getElementById('contact-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('button[type=submit]');
+    btn.disabled = true;
+    btn.textContent = 'Wird gesendet …';
+    try {
+      const res = await fetch('https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID', {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+      if (res.ok) {
+        document.getElementById('form-success').classList.remove('hidden');
+        form.querySelectorAll('input, textarea, select').forEach(el => { el.disabled = true; });
+        btn.classList.add('hidden');
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Anfrage senden';
+        alert('Fehler beim Senden. Bitte rufen Sie uns direkt an: +49 175 1402738');
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Anfrage senden';
+      alert('Fehler beim Senden. Bitte rufen Sie uns direkt an: +49 175 1402738');
+    }
+  });
+
+  // Smooth nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) cur = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + cur ? '#ffffff' : '';
+    });
+  }, { passive: true });
+</script>
+
+</body>
+</html>
