@@ -80,11 +80,11 @@
       padding: 0 2rem;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .wordmark { display: flex; flex-direction: column; gap: 2px; line-height: 1; }
+    .wordmark { display: flex; flex-direction: column; gap: 6px; line-height: 1; }
     .wordmark-row { display: flex; align-items: baseline; gap: 4px; }
     .wordmark-bold { font-size: 1.1rem; font-weight: 800; letter-spacing: 0.04em; color: var(--ink); }
     .wordmark-light { font-size: 1.1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--red); }
-    .wordmark-sub { font-size: 0.52rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+    .wordmark-sub { font-size: 0.52rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 0; }
     .nav-links { display: flex; gap: 2.4rem; }
     .nav-links a { font-size: 0.88rem; font-weight: 500; color: var(--ink-2); letter-spacing: 0.005em; transition: color 0.2s; }
     .nav-links a:hover { color: var(--red); }
@@ -776,31 +776,22 @@
       body { padding-bottom: 56px; }
     }
     .sticky-call {
-      background: var(--red); color: #fff;
+      background: var(--ink); color: #fff;
       display: flex; align-items: center; justify-content: center; gap: 8px;
-      height: 56px; font-weight: 800; font-size: 0.9rem;
+      height: 60px; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.005em;
+      transition: background 0.2s;
     }
+    .sticky-call:active { background: #000; }
     .sticky-wa {
-      background: #111111; color: #fff;
+      background: #25D366; color: #fff;
       display: flex; align-items: center; justify-content: center; gap: 8px;
-      height: 56px; font-weight: 700; font-size: 0.9rem;
-      border-top: 1px solid rgba(255,255,255,0.06);
+      height: 60px; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.005em;
+      transition: background 0.2s;
     }
+    .sticky-wa:active { background: #1ebd5b; }
 
     details summary { cursor: pointer; list-style: none; }
     details summary::-webkit-details-marker { display: none; }
-
-    /* Liquid Glass — entfernt (passte nur zum alten Dark-Theme) */
-    /* sticky bar: simpler glass (full-width, no pill shape needed) */
-    .sticky-call, .sticky-wa {
-      -webkit-backdrop-filter: blur(20px) !important;
-      backdrop-filter: blur(20px) !important;
-      background: rgba(255,255,255,0.08) !important;
-      border-top: 1px solid rgba(255,255,255,0.12) !important;
-      transition: filter 0.2s !important;
-    }
-    .sticky-call:hover { filter: brightness(1.15); }
-    .sticky-wa:hover { filter: brightness(1.15); }
   </style>
 </head>
 <body>
@@ -932,7 +923,7 @@
       <a href="#kontakt" class="leistung-row">
         <div class="leistung-num">02</div>
         <div class="leistung-body">
-          <h3>Finanzierung &amp; Leasing</h3>
+          <h3>Finanzierung möglich</h3>
           <p>Flexible Lösungen über etablierte Bankenpartner. Ratenrechnung transparent — wir finden den Weg, der zu Ihnen passt.</p>
           <div class="leistung-arrow" aria-hidden="true">↗</div>
         </div>
@@ -951,7 +942,7 @@
         <div class="leistung-num">04</div>
         <div class="leistung-body">
           <h3>Zulassungsdienst</h3>
-          <p>Auf Wunsch übernehmen wir die komplette Zulassung — Anmeldung, Versicherung, Kennzeichen. Sie holen das Fahrzeug fahrbereit ab.</p>
+          <p>Auf Wunsch übernehmen wir die komplette Zulassung — Anmeldung und Kennzeichen. Sie holen das Fahrzeug fahrbereit ab.</p>
           <div class="leistung-arrow" aria-hidden="true">↗</div>
         </div>
       </a>
@@ -960,7 +951,7 @@
         <div class="leistung-num">05</div>
         <div class="leistung-body">
           <h3>Persönlich &amp; vertrauensvoll</h3>
-          <p>Kein Callcenter, kein anonymer Konzern. Sie sprechen direkt mit Nico Gillich — einem Händler, der zuhört und langfristig denkt.</p>
+          <p>Kein Callcenter, kein anonymer Konzern. Sie sprechen direkt mit uns — einem Händlerbetrieb, der zuhört und langfristig denkt.</p>
           <div class="leistung-arrow" aria-hidden="true">↗</div>
         </div>
       </a>
@@ -1194,10 +1185,10 @@
         <p style="font-size:0.92rem; color:var(--muted); line-height:1.75; margin-bottom:1.5rem;">
           Willkommen bei <strong style="color:var(--white);">Gillich Automobile</strong> in Olfen — Ihrem persönlichen Fahrzeughändler
           im Münsterland. Mit Kompetenz, Erfahrung und echter Leidenschaft für Automobile
-          stehe ich Ihnen zur Seite.
+          stehen wir Ihnen zur Seite.
         </p>
         <p style="font-size:0.92rem; color:var(--muted); line-height:1.75; margin-bottom:2.5rem;">
-          Bei mir kaufen Sie nicht anonym. Sie erhalten individuelle Beratung,
+          Bei uns kaufen Sie nicht anonym. Sie erhalten individuelle Beratung,
           faire Konditionen und einen Ansprechpartner, der auch nach dem Kauf für Sie da ist.
         </p>
 
@@ -1251,7 +1242,8 @@
         </ul>
       </aside>
 
-      <form class="iz-form-grid" action="https://formspree.io/f/your-form-id" method="POST" enctype="multipart/form-data" novalidate>
+      <!-- TODO: action="https://formspree.io/f/DEINE-FORMSPREE-ID" eintragen, sobald Formspree-Account angelegt ist. Datei-Upload braucht Formspree Bronze-Plan. -->
+      <form class="iz-form-grid" id="iz-form" action="mailto:gillich@gillich-automobile.de" method="POST" enctype="multipart/form-data" novalidate>
         <div>
           <label class="iz-label" for="iz-marke">Marke<span class="req">*</span></label>
           <input class="iz-inp" type="text" id="iz-marke" name="marke" placeholder="z. B. BMW" required />
@@ -1269,18 +1261,18 @@
           <input class="iz-inp" type="number" id="iz-km" name="kilometerstand" placeholder="z. B. 85.000" min="0" required />
         </div>
         <div>
-          <label class="iz-label" for="iz-getriebe">Getriebe</label>
-          <select class="iz-inp" id="iz-getriebe" name="getriebe">
-            <option>Wählen</option>
+          <label class="iz-label" for="iz-getriebe">Getriebe<span class="req">*</span></label>
+          <select class="iz-inp" id="iz-getriebe" name="getriebe" required>
+            <option value="">Wählen</option>
             <option>Schaltgetriebe</option>
             <option>Automatik</option>
             <option>Halbautomatik / DSG</option>
           </select>
         </div>
         <div>
-          <label class="iz-label" for="iz-kraftstoff">Kraftstoff</label>
-          <select class="iz-inp" id="iz-kraftstoff" name="kraftstoff">
-            <option>Wählen</option>
+          <label class="iz-label" for="iz-kraftstoff">Kraftstoff<span class="req">*</span></label>
+          <select class="iz-inp" id="iz-kraftstoff" name="kraftstoff" required>
+            <option value="">Wählen</option>
             <option>Benzin</option>
             <option>Diesel</option>
             <option>Hybrid</option>
@@ -1289,13 +1281,25 @@
           </select>
         </div>
         <div>
-          <label class="iz-label" for="iz-preis">Preisvorstellung</label>
-          <input class="iz-inp" type="text" id="iz-preis" name="preisvorstellung" placeholder="€ — optional, aber hilfreich" />
+          <label class="iz-label" for="iz-farbe">Wagenfarbe<span class="req">*</span></label>
+          <input class="iz-inp" type="text" id="iz-farbe" name="farbe" placeholder="z. B. Schwarz metallic" required />
         </div>
         <div>
-          <label class="iz-label" for="iz-zustand">Zustand</label>
-          <select class="iz-inp" id="iz-zustand" name="zustand">
-            <option>Wählen</option>
+          <label class="iz-label" for="iz-tueren">Türen<span class="req">*</span></label>
+          <select class="iz-inp" id="iz-tueren" name="tueren" required>
+            <option value="">Wählen</option>
+            <option>2/3-Türer</option>
+            <option>4/5-Türer</option>
+          </select>
+        </div>
+        <div>
+          <label class="iz-label" for="iz-preis">Preisvorstellung<span class="req">*</span></label>
+          <input class="iz-inp" type="text" id="iz-preis" name="preisvorstellung" placeholder="€ — Ihre Vorstellung" required />
+        </div>
+        <div>
+          <label class="iz-label" for="iz-zustand">Zustand<span class="req">*</span></label>
+          <select class="iz-inp" id="iz-zustand" name="zustand" required>
+            <option value="">Wählen</option>
             <option>Sehr gut — keine Schäden</option>
             <option>Gut — kleine Gebrauchsspuren</option>
             <option>Befriedigend — sichtbare Schäden</option>
@@ -1309,12 +1313,12 @@
         </div>
 
         <label class="iz-upload" for="iz-fahrzeugschein">
-          <input type="file" id="iz-fahrzeugschein" name="fahrzeugschein" accept="image/*,application/pdf" multiple onchange="document.getElementById('iz-file-list').textContent = Array.from(this.files).map(f=>f.name).join(', ') || ''" />
+          <input type="file" id="iz-fahrzeugschein" name="fahrzeugschein" accept="image/*,application/pdf" multiple required onchange="document.getElementById('iz-file-list').textContent = Array.from(this.files).map(f=>f.name).join(', ') || ''" />
           <div class="iz-upload-icon">
             <svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <div class="iz-upload-text">Fahrzeugschein hochladen</div>
-          <div class="iz-upload-hint">Foto oder PDF · max. 10 MB · mehrere Dateien möglich</div>
+          <div class="iz-upload-text">Fahrzeugschein hochladen<span class="req" style="color: var(--red); margin-left: 0.2em;">*</span></div>
+          <div class="iz-upload-hint">Foto oder PDF · max. 10 MB · mehrere Dateien möglich · Pflichtfeld</div>
           <div class="iz-upload-files" id="iz-file-list"></div>
         </label>
 
@@ -1649,6 +1653,27 @@
   window.addEventListener('load', () => {
     document.getElementById('heroBg').classList.add('ready');
   });
+
+  // Inzahlungnahme-Form: graceful mailto-Fallback bis Formspree-ID eingetragen ist
+  const izForm = document.getElementById('iz-form');
+  if (izForm && izForm.action.startsWith('mailto:')) {
+    izForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(izForm);
+      const lines = ['Inzahlungnahme-Anfrage über gillich-automobile.de', '', '— Fahrzeug —'];
+      const fieldOrder = ['marke','modell','erstzulassung','kilometerstand','getriebe','kraftstoff','farbe','tueren','preisvorstellung','zustand','ausstattung'];
+      const labels = { marke:'Marke', modell:'Modell', erstzulassung:'Erstzulassung', kilometerstand:'Kilometerstand', getriebe:'Getriebe', kraftstoff:'Kraftstoff', farbe:'Wagenfarbe', tueren:'Türen', preisvorstellung:'Preisvorstellung', zustand:'Zustand', ausstattung:'Ausstattung' };
+      fieldOrder.forEach(k => { const v = data.get(k); if (v) lines.push(`${labels[k]}: ${v}`); });
+      lines.push('', '— Kontakt —');
+      ['name','email','telefon','rueckruf'].forEach(k => { const v = data.get(k); if (v) lines.push(`${k}: ${v}`); });
+      const fzs = izForm.querySelector('#iz-fahrzeugschein');
+      if (fzs && fzs.files && fzs.files.length) {
+        lines.push('', `Fahrzeugschein-Dateien (bitte separat anhängen): ${Array.from(fzs.files).map(f=>f.name).join(', ')}`);
+      }
+      const mailto = `mailto:gillich@gillich-automobile.de?subject=${encodeURIComponent('Inzahlungnahme-Anfrage — ' + (data.get('marke')||'') + ' ' + (data.get('modell')||''))}&body=${encodeURIComponent(lines.join('\n'))}`;
+      window.location.href = mailto;
+    });
+  }
 
   document.getElementById('contact-form').addEventListener('submit', async (e) => {
     e.preventDefault();
