@@ -1227,7 +1227,7 @@
     <div class="section-label">Inzahlungnahme</div>
     <h2 class="section-h2">Ihr Fahrzeug — <span style="color:var(--red);">unser&nbsp;Angebot.</span></h2>
     <div class="section-line"></div>
-    <p class="lead">Schicken Sie uns die Eckdaten und einen Fahrzeugschein-Scan — wir melden uns innerhalb eines Werktages mit einem fairen Ankaufpreis zurück.</p>
+    <p class="lead">Schicken Sie uns die Eckdaten zu Ihrem Fahrzeug — wir melden uns innerhalb eines Werktages mit einem fairen Ankaufpreis zurück.</p>
 
     <div class="iz-grid">
       <aside class="iz-card">
@@ -1315,16 +1315,6 @@
           <label class="iz-label" for="iz-ausstattung">Ausstattung &amp; Besonderheiten</label>
           <textarea class="iz-inp" id="iz-ausstattung" name="ausstattung" placeholder="Klimaautomatik, Navi, Anhängerkupplung, Sommer-/Winterreifen, Scheckheft, etc."></textarea>
         </div>
-
-        <label class="iz-upload" for="iz-fahrzeugschein">
-          <input type="file" id="iz-fahrzeugschein" name="fahrzeugschein" accept="image/*,application/pdf" multiple required onchange="document.getElementById('iz-file-list').textContent = Array.from(this.files).map(f=>f.name).join(', ') || ''" />
-          <div class="iz-upload-icon">
-            <svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <div class="iz-upload-text">Fahrzeugschein hochladen<span class="req" style="color: var(--red); margin-left: 0.2em;">*</span></div>
-          <div class="iz-upload-hint">Foto oder PDF · max. 10 MB · mehrere Dateien möglich · Pflichtfeld</div>
-          <div class="iz-upload-files" id="iz-file-list"></div>
-        </label>
 
         <div>
           <label class="iz-label" for="iz-name">Name<span class="req">*</span></label>
