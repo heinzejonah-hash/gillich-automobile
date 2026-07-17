@@ -455,6 +455,20 @@
       font-size: 0.65rem; font-weight: 800; letter-spacing: 0.1em;
       text-transform: uppercase; padding: 3px 8px; border-radius: 4px;
     }
+    /* ── FAHRZEUGE LIVE-EMBED (mobile.de) ── */
+    .fahrzeuge-embed {
+      margin-top: 1.5rem;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+    .fahrzeuge-embed iframe {
+      display: block; width: 100%; height: 980px; border: 0;
+    }
+    @media (max-width: 768px) {
+      .fahrzeuge-embed iframe { height: 1200px; }
+    }
 
     /* ── BEWERTUNGEN ── */
     .reviews-mask {
@@ -749,6 +763,18 @@
       transition: color 0.2s;
     }
     .footer-link:hover { color: var(--red); }
+    .footer-ig {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.82rem; color: rgba(255,255,255,0.6);
+      transition: color 0.2s;
+    }
+    .footer-ig:hover { color: #fff; }
+    .footer-ig svg {
+      width: 22px; height: 22px; padding: 4px; box-sizing: border-box;
+      border: 1px solid rgba(255,255,255,0.25); border-radius: 6px;
+      flex-shrink: 0; transition: border-color 0.2s;
+    }
+    .footer-ig:hover svg { border-color: var(--red); }
     .footer-text {
       font-size: 0.92rem;
       color: rgba(255,255,255,0.78);
@@ -1160,6 +1186,15 @@
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
+
+    <div class="fahrzeuge-embed">
+      <iframe
+        src="https://home.mobile.de/home/index.html?partnerHead=false&amp;customerId=40848437"
+        title="Aktueller Fahrzeugbestand von Gillich Automobile auf mobile.de"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+      ></iframe>
+    </div>
   </div>
 </section>
 
@@ -1546,10 +1581,17 @@
           <span class="wordmark-sub">Ihr Fahrzeugpartner im Münsterland</span>
         </div>
         <p class="footer-text" style="margin-top:1.4rem;">Ihr persönlicher Fahrzeughändler<br />im Herzen des Münsterlands.</p>
+        <p class="footer-text" style="margin-top:1rem; font-size:0.78rem; color:rgba(255,255,255,0.45); line-height:1.7;">
+          Wir bedienen die Region rund um Olfen — <a href="https://www.google.com/maps?q=Gillich+Automobile+Olfen" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(255,255,255,0.2);">Lüdinghausen, Selm, Werne, Datteln, Haltern am See, Dülmen, Lünen, Recklinghausen und Coesfeld</a>.
+        </p>
         <div style="margin-top:1.2rem; display:flex; gap:0.5rem; align-items:center;">
           <span class="stars-gold" style="font-size:0.9rem;">★★★★★</span>
           <span style="font-size:0.82rem; color:rgba(255,255,255,0.6);">5,0 · 30+ Bewertungen</span>
         </div>
+        <a href="https://www.instagram.com/gillichautomobile" target="_blank" rel="noopener" class="footer-ig" style="margin-top:0.9rem;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          Wir sind auch auf Instagram
+        </a>
       </div>
       <div>
         <div class="footer-h">Kontakt</div>
